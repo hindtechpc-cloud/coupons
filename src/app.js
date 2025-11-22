@@ -5,8 +5,8 @@ const helmet = require("helmet");
 const cors = require("cors");
 const { PORT, MONGODB_URI } = require("./config/env");
 const couponRoutes = require("./routes/couponRoutes");
-const productRoutes =require("./routes/productRoutes")
-const cartRoutes =require("./routes/cartRoutes")
+const productRoutes = require("./routes/productRoutes");
+const cartRoutes = require("./routes/cartRoutes");
 const app = express();
 
 // Security middleware
@@ -33,6 +33,12 @@ app.get("/health", (req, res) => {
     status: "OK",
     timestamp: new Date().toISOString(),
     uptime: process.uptime(),
+  });
+});
+app.get("/", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Welcome to Coupon Management System",
   });
 });
 
